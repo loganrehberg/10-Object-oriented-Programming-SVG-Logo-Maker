@@ -1,6 +1,6 @@
 // Required Files
 const inquirer = require('inquirer');
-const shapes = require("./lib");
+const shapes = require("./lib/shapes.js");
 const fs = require("fs");
 
 //Question Array
@@ -9,34 +9,52 @@ const questions = [
   {
     type: "input",
     name: "text",
-    text: "Enter message here (3 character limit):",
-    validate: (input) => input.length <= 3 || "text needs to be 3 characters",
+    message: "Enter message here (3 character limit):",
+    
   },
   //Shape
   {
     type: "list",
     name: "shape",
-    text: "choose your shape",
+    message: "choose your shape",
     choice: ["Circle", "Square", "Triangle"],
   },
   //Text color
   {
     type: "input",
     color: "textColor",
-    text: "Enter message here (name or hex)",
+    message: "Enter message here (name or hex)",
   },
   //Shape color
   {
     type: "input",
     name: "shapeColor",
-    text: "What color would you like your shape? (color or hex)",
+    message: "What color would you like your shape? (color or hex)",
   },
 ];
 
 //Function to generate the SVG logo
-const SVG = (text, textColor, shape) => {
-  return ` <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">${shapeElement}<text x="150" y="100" font-family="Arial" font-size="20" text-anchor="middle" fill="${textColor}">${text}</text></svg>`;
-};
+function generateSVG(text, textColor, shape, shapeColor) {
+  let svgContent = '';
+
+  switch (shape.toLowerCase()) {
+    case 'circle':
+      svgContent = `<circle cx="150" cy="100" r="50" fill="${shapeColor}" />`;
+      break;
+    case 'triangle':
+      svgContent = `<polygon points="150,50 100,150 200,150" fill="${shapeColor}" />`;
+      break;
+    case 'square':
+      svgContent = `<rect x="100" y="50" width="100" height="100" fill="${shapeColor}" />`;
+      break;
+    default:
+      throw new Error('Invalid shape choice.');
+  }
+
+  svgContent += `<text x="150" y="120" fill="${textColor}" font-family="Arial" font-size="20" text-anchor="middle">${text}</text>`;
+
+  return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">${svgContent}</svg>`;
+}
 //Function to create SVG file
 function write(data) {
   fs.writeFile("./examples/logo.svg", data, (err) =>

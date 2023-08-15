@@ -1,5 +1,27 @@
 {
+  "name": "svgmaker",
+  "version": "1.0.0",
+  "description": "Creating SVGs",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loganrehberg/10-Object-oriented-Programming-SVG-Logo-Maker.git"
+  },
+  "author": "Logan Rehberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loganrehberg/10-Object-oriented-Programming-SVG-Logo-Maker/issues"
+  },
+  "homepage": "https://github.com/loganrehberg/10-Object-oriented-Programming-SVG-Logo-Maker#readme",
   "dependencies": {
-    "inquirer": "^9.2.10"
+    "express": "^4.18.2",
+    "inquirer": "^8.2.6"
   }
 }
