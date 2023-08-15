@@ -32,28 +32,7 @@ const questions = [
   },
 ];
 
-// Function to generate the SVG logo
-// function generateSVG(text, textColor, shape, shapeColor) {
-//   let svgContent = "";
 
-//   switch (shape.toLowerCase()) {
-//     case "circle":
-//       svgContent = `<circle cx="150" cy="100" r="50" fill="${shapeColor}" />`;
-//       break;
-//     case "triangle":
-//       svgContent = `<polygon points="150,50 100,150 200,150" fill="${shapeColor}" />`;
-//       break;
-//     case "square":
-//       svgContent = `<rect x="100" y="50" width="100" height="100" fill="${shapeColor}" />`;
-//       break;
-//     default:
-//       throw new Error("Invalid shape choice.");
-//   }
-
-//   svgContent += `<text x="150" y="120" fill="${textColor}" font-family="Arial" font-size="20" text-anchor="middle">${text}</text>`;
-
-//   return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">${svgContent}</svg>`;
-// }
 // variable to createSVG
 const generateSVG = (text, textColor, shapeElement) => {
   return `
