@@ -8,8 +8,8 @@
     "lib": "lib"
   },
   "scripts": {
-  "test": "jest"
-  },  
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/loganrehberg/10-Object-oriented-Programming-SVG-Logo-Maker.git"

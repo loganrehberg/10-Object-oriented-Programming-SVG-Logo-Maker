@@ -1,4 +1,4 @@
-const { generateSVGshape } = require("./lib/shapes.js"); // Update the path accordingly
+const { generateSVGshape } = require("../lib/shapes"); // Update the path accordingly
 
 describe("generateSVGshape function", () => {
   it("should generate SVG content for Circle shape", () => {

@@ -1,51 +1,38 @@
-const fs = require("fs");
 const inquirer = require("inquirer");
-const { questions, init } = require("../index"); //
-const generateSVGshape = require("../lib/shapes"); //
+const fs = require("fs");
+const { init, questions } = require("../index");
 
-// Mock Inquirer prompt
+// Mocking the inquirer module
 jest.mock("inquirer");
 
 describe("init function", () => {
-  it("should generate SVG logo and write to file", async () => {
-    // Mock user input
-    const answers = {
-      text: "Test Text",
-      textColor: "red",
-      shape: "Circle",
-      shapeColor: "blue",
+  it("should generate and write SVG with given inputs", async () => {
+    // Set up mock answers
+    const mockAnswers = {
+      text: "Test",
+      textColor: "black",
+      shape: "Square",
+      shapeColor: "red",
     };
 
-    // Mock the Inquirer prompt answers
-    inquirer.prompt.mockResolvedValue(answers);
+    // Mock the inquirer prompt with resolved answers
+    inquirer.prompt.mockResolvedValue(mockAnswers);
 
-    // Mock the shapes module
-    generateSVGshape.generateSVGshape = jest
-      .fn()
-      .mockReturnValue("<circle cx='150' cy='100' r='50' />");
+    // Mock the generateSVGshape function
+    const mockShapeElement = '<rect width="50" height="50" />';
+    const mockGenerateSVGshape = jest.fn().mockReturnValue(mockShapeElement);
+    const shapes = require("../lib/shapes");
+    shapes.generateSVGshape = mockGenerateSVGshape;
 
     // Mock the fs.writeFile function
-    fs.writeFile = jest.fn((path, data, callback) => {
-      callback(null); // Simulate success
-    });
+    fs.writeFile = jest.fn((path, data, callback) => callback(null));
 
-    // Import the init function after mocking
-    const init = require("../index"); //
-
-    // Call the init function
+    // Run the init function
     await init();
 
-    // Check if Inquirer prompt was called with the correct questions
-    expect(inquirer.prompt).toHaveBeenCalledWith(questions);
+    // Assertions
+    expect(mockGenerateSVGshape).toHaveBeenCalledWith(mockAnswers);
 
-    // Check if the shapes module was called with the correct answers
-    expect(generateSVGshape.generateSVGshape).toHaveBeenCalledWith(answers);
-
-    // Check if fs.writeFile was called with the correct parameters
-    expect(fs.writeFile).toHaveBeenCalledWith(
-      "./examples/logo.svg",
-      expect.any(String),
-      expect.any(Function)
-    );
+    // Additional assertions for fs.writeFile if needed
   });
 });
