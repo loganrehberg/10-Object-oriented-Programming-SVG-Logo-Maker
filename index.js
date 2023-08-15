@@ -58,7 +58,7 @@ const questions = [
 const generateSVG = (text, textColor, shapeElement) => {
   return `
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">${shapeElement}<text x="150" y="100" font-family="Arial" font-size="20" text-anchor="middle" fill="${textColor}">${text}</text></svg>
-  `
+  `;
 };
 //Function to create SVG file
 function write(data) {
@@ -79,5 +79,7 @@ function init() {
 }
 
 //Export to use for testing
-module.export = questions;
-init();
+module.exports = {
+  questions,
+  init
+};
