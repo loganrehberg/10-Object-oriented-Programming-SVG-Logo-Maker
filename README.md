@@ -1,6 +1,3 @@
-Certainly! Below is a template for a README.md file for your GitHub repository. You can copy and paste this template into your README file and then customize the sections with relevant information about your project.
-
-markdown
 
 # Object-oriented SVG Logo Maker
 
