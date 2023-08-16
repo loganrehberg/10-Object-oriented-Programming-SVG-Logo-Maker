@@ -3,6 +3,7 @@ const inquirer = require("inquirer");
 const shapes = require("./lib/shapes.js");
 const fs = require("fs");
 
+
 //Question Array
 const questions = [
   //Text input
@@ -39,6 +40,7 @@ const generateSVG = (text, textColor, shapeElement) => {
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">${shapeElement}<text x="150" y="100" font-family="Arial" font-size="20" text-anchor="middle" fill="${textColor}">${text}</text></svg>
   `;
 };
+
 //Function to create SVG file
 function write(data) {
   fs.writeFile("./examples/logo.svg", data, (err) =>
@@ -62,3 +64,4 @@ module.exports = {
   questions,
   init
 };
+init();
