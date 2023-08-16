@@ -19,6 +19,8 @@ Create customizable SVG logos using object-oriented programming in JavaScript.
 
 This repository contains a JavaScript application that allows you to generate SVG logos using object-oriented programming principles. The application uses the Inquirer library to interactively collect input from the user and then generates an SVG logo based on the provided specifications.
 
+[![Watch the video](https://i.stack.imgur.com/Vp2cE.png)](https://drive.google.com/file/d/1OXo42Xrj6Sh7p74u1YU52wfbmJfT3eLe/view)
+
 ## Features
 
 - Interactive CLI interface for specifying logo properties.
